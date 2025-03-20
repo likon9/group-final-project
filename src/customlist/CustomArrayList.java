@@ -1,3 +1,4 @@
+package customlist;
 
 public class CustomArrayList<T>{
     private final int INIT_SIZE = 16;
