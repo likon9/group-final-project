@@ -1,14 +1,14 @@
 package Sorting;
 
-import java.util.ArrayList;
+import customlist.CustomArrayList;
 
 public class  QuickSort<T extends Comparable<T>> {
 
-    public void quickSort(ArrayList<T> list) {
+    public void quickSort(CustomArrayList<T> list) {
         quickSort(list, 0, list.size() - 1);
     }
 
-    private void quickSort(ArrayList<T> list, int low, int high) {
+    private void quickSort(CustomArrayList<T> list, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(list, low, high);
             quickSort(list, low, pivotIndex - 1);
@@ -16,7 +16,7 @@ public class  QuickSort<T extends Comparable<T>> {
         }
     }
 
-    private int partition(ArrayList<T> list, int low, int high) {
+    private int partition(CustomArrayList<T> list, int low, int high) {
         T pivot = list.get(high);
         int i = low - 1;
 
@@ -31,7 +31,7 @@ public class  QuickSort<T extends Comparable<T>> {
         return i + 1;
     }
 
-    private void swap(ArrayList<T> list, int i, int j) {
+    private void swap(CustomArrayList<T> list, int i, int j) {
         T temp = list.get(i);
         list.set(i, list.get(j));
         list.set(j, temp);
