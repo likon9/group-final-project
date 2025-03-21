@@ -11,6 +11,9 @@ public class BarrelViewModel {
         this.bodyMaterialCode = bodyMaterialCode;
     }
 
+    public BarrelViewModel() {
+    }
+
     public double getVolume() {
         return volume;
     }
@@ -21,5 +24,17 @@ public class BarrelViewModel {
 
     public int getBodyMaterialCode() {
         return bodyMaterialCode;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public void setStoredContents(String storedContents) {
+        this.storedContents = storedContents;
+    }
+
+    public void setBodyMaterialCode(int bodyMaterialCode) {
+        this.bodyMaterialCode = bodyMaterialCode;
     }
 }

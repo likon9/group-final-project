@@ -1,6 +1,8 @@
 package Data.VeiwModels;
 
-public class AnimalViewModel {
+import java.io.Serializable;
+
+public class AnimalViewModel implements Serializable {
     private int id;
     private String species;
     private int eyesColorCode;
@@ -11,6 +13,9 @@ public class AnimalViewModel {
         this.species = species;
         this.eyesColorCode = eyesColorCode;
         this.hasFur = hasFur;
+    }
+
+    public AnimalViewModel() {
     }
 
     public int getId() {
@@ -27,5 +32,21 @@ public class AnimalViewModel {
 
     public boolean isHasFur() {
         return hasFur;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public void setEyesColorCode(int eyesColorCode) {
+        this.eyesColorCode = eyesColorCode;
+    }
+
+    public void setHasFur(boolean hasFur) {
+        this.hasFur = hasFur;
     }
 }
