@@ -1,14 +1,17 @@
 package Data.VeiwModels;
 
-public class PeronViewModel {
+public class PersonViewModel {
     private int genderCode;
     private int age;
     private String lastName;
 
-    public PeronViewModel(int genderCode, int age, String lastName) {
+    public PersonViewModel(int genderCode, int age, String lastName) {
         this.genderCode = genderCode;
         this.age = age;
         this.lastName = lastName;
+    }
+
+    public PersonViewModel() {
     }
 
     public int getGenderCode() {
@@ -21,5 +24,17 @@ public class PeronViewModel {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setGenderCode(int genderCode) {
+        this.genderCode = genderCode;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
