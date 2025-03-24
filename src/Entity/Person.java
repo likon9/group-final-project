@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Person implements Serializable, Comparable<Person> {
+public class Person implements Item, Serializable, Comparable<Person> {
 
     private Gender gender ;
     private int age;
@@ -70,6 +70,14 @@ public class Person implements Serializable, Comparable<Person> {
                 thenComparing(Person::getLastName);
 
         return comparator.compare(this, o);
+    }
+
+    @Override
+    public boolean isValid() {
+        if (age <= 0) return false;
+        if (gender == null) return false;
+        if (lastName == null || lastName.isBlank()) return false;
+        return true;
     }
 
     public static class PersonBuilder {

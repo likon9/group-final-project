@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Barrel implements Serializable, Comparable<Barrel> {
+public class Barrel implements Item, Serializable, Comparable<Barrel> {
 
     private double volume;
     private String storedContents ;
@@ -70,6 +70,14 @@ public class Barrel implements Serializable, Comparable<Barrel> {
                 thenComparing(Barrel::getBodyMaterial);
 
         return comparator.compare(this, o);
+    }
+
+    @Override
+    public boolean isValid() {
+        if (volume <= 0) return false;
+        if (bodyMaterial == null) return false;
+        if (storedContents == null || storedContents.isBlank()) return false;
+        return true;
     }
 
     public static class BarrelBuilder {
