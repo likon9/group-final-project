@@ -1,6 +1,5 @@
 package Data.Services;
 
-import Data.VeiwModels.AnimalViewModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
