@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Animal implements Serializable, Comparable<Animal> {
+public class Animal implements Item, Serializable, Comparable<Animal> {
 
     private int id;
     private String animalSpecies;
@@ -82,6 +82,14 @@ public class Animal implements Serializable, Comparable<Animal> {
                 thenComparing(Animal::getId);
 
         return comparator.compare(this, o);
+    }
+
+    @Override
+    public boolean isValid() {
+        if (id <= 0) return false;
+        if (eyeColor == null) return false;
+        if (animalSpecies == null || animalSpecies.isBlank()) return false;
+        return true;
     }
 
     public static class AnimalBuilder {
