@@ -4,7 +4,7 @@ import customlist.CustomArrayList;
 
 public class InsertionSort<T extends Comparable<T>> {
 
-    public void insertionSort(CustomArrayList<T> list) {
+    public static <T extends Comparable<T>> void insertionSort(CustomArrayList<T> list) {
         for (int i = 1; i < list.size(); i++) {
             T key = list.get(i);
             int j = i - 1;
