@@ -13,6 +13,7 @@ public class InsertionSort<T extends Comparable<T>> {
                 list.set(j + 1, list.get(j));
                 j--;
             }
+
             list.set(j + 1, key);
         }
     }
