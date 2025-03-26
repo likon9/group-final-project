@@ -1,6 +1,6 @@
 package Sorting;
 
-import customlist.CustomArrayList;
+import Customlist.CustomArrayList;
 
 import java.lang.reflect.Field;
 import java.util.List;
