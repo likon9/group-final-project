@@ -1,4 +1,4 @@
-package customlist;
+package Customlist;
 
 import java.util.*;
 
