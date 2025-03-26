@@ -24,15 +24,5 @@ public class Main {
         List<Comparable<?>> items = dataProcessor.getItems();
         items.forEach(System.out::println);
 
-        boolean exit = false;
-        Scanner scan = new Scanner(System.in);
-        String answ = "0";
-
-        while (true) {
-            UserMenu.chooseStep(answ);
-            answ = scan.nextLine();
-            if (answ.toLowerCase().equals("exit"))
-                break;
-        }
     }
 }

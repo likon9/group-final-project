@@ -1,6 +1,9 @@
 package customlist;
 
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class CustomArrayList<T> implements List<T> {
     private final int INIT_SIZE = 16;
@@ -16,6 +19,15 @@ public class CustomArrayList<T> implements List<T> {
     public CustomArrayList(int capacity) {
         this.capacity = capacity;
         array = new Object[capacity];
+    }
+
+    public CustomArrayList(List<T> list) {
+        this.capacity = list.size();
+        this.size = list.size();
+        array = new Object[capacity];
+        for (int i = 0; i < capacity; i++) {
+            array[i] = list.get(i);
+        }
     }
 
     @Override
@@ -49,6 +61,19 @@ public class CustomArrayList<T> implements List<T> {
             }
         };
         return it;
+    }
+
+    @Override
+    public void forEach(Consumer<? super T> action) {
+        Objects.requireNonNull(action);
+        for (T t : this) {
+            action.accept(t);
+        }
+    }
+
+    @Override
+    public Stream<T> stream() {
+        return StreamSupport.stream(spliterator(), false);
     }
 
     @Override
