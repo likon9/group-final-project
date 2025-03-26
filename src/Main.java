@@ -1,8 +1,8 @@
 import Data.DataProcessor;
 import Entity.*;
-import Sorting.QuickSort;
 import UserInput.*;
 import customlist.CustomArrayList;
+import sorting.InsertionSort;
 
 import java.util.List;
 
@@ -10,19 +10,20 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        var collectionType = CollectionType.BARREL;
+        var collectionType = CollectionType.ANIMAL;
         var dataSourceType = DataSourceType.RANDOM;
         var arrayLength = 15;
         var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
         List<Item> items = dataProcessor.getItems();
-        items.forEach(System.out::println);
-        // showDataFetchingAndSortingExample();
+        TablePrinting.printTable(items);
+
+        showDataFetchingAndSortingExample();
     }
 
     private static void showDataFetchingAndSortingExample() {
         // data fetching and sorting examples
-        var collectionType = CollectionType.BARREL;
-        var dataSourceType = DataSourceType.FILE;
+        var collectionType = CollectionType.PERSON;
+        var dataSourceType = DataSourceType.RANDOM;
         var arrayLength = 12;
         var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
         List<Item> items = dataProcessor.getItems();
@@ -48,27 +49,24 @@ public class Main {
 
         System.out.println("\n///UNSORTED:///");
         if (animals != null){
-            animals.forEach(System.out::println);
-            QuickSort<Animal> animalSorter = new QuickSort<>();
-            animalSorter.quickSort(animals);
+            TablePrinting.printTable(animals);
+            InsertionSort.insertionSort(animals);
             System.out.println("\n///SORTED:///");
-            animals.forEach(System.out::println);
+            TablePrinting.printTable(animals);
         }
 
         if (barrels != null){
-            barrels.forEach(System.out::println);
-            QuickSort<Barrel> barrelSorter = new QuickSort<>();
-            barrelSorter.quickSort(barrels);
+            TablePrinting.printTable(barrels);
+            InsertionSort.insertionSort(barrels);
             System.out.println("\n///SORTED:///");
-            barrels.forEach(System.out::println);
+            TablePrinting.printTable(barrels);
         }
 
         if (persons != null){
-            persons.forEach(System.out::println);
-            QuickSort<Person> personSorter = new QuickSort<>();
-            personSorter.quickSort(persons);
+            TablePrinting.printTable(persons);
+            InsertionSort.insertionSort(persons);
             System.out.println("\n///SORTED:///");
-            persons.forEach(System.out::println);
+            TablePrinting.printTable(persons);
         }
     }
 }
