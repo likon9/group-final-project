@@ -1,4 +1,4 @@
-package util;
+package search;
 
 /**
  * Implements custom logic for binary search.

@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="geckoprojects.libraries.net.datafaker" type="repository">
+    <properties maven-id="org.geckoprojects.libraries:net.datafaker:2.4.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/geckoprojects/libraries/net.datafaker/2.4.2/net.datafaker-2.4.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/datafaker/datafaker/2.4.2/datafaker-2.4.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/curious-odd-man/rgxgen/2.0/rgxgen-2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/googlecode/libphonenumber/libphonenumber/8.13.50/libphonenumber-8.13.50.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.annotation.versioning/1.1.2/org.osgi.annotation.versioning-1.1.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.annotation.bundle/2.0.0/org.osgi.annotation.bundle-2.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.service.component.annotations/1.5.1/org.osgi.service.component.annotations-1.5.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/osgi.annotation/8.1.0/osgi.annotation-8.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.namespace.extender/1.0.1/org.osgi.namespace.extender-1.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.util.function/1.0.0/org.osgi.util.function-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.util.promise/1.0.0/org.osgi.util.promise-1.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.service.metatype.annotations/1.4.1/org.osgi.service.metatype.annotations-1.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/osgi/org.osgi.namespace.implementation/1.0.0/org.osgi.namespace.implementation-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
