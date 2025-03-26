@@ -1,6 +1,6 @@
 package Data.Strategies.ForBarrel;
 
-import Data.Services.DataGenerationService;
+import Data.Services.DataGenerationServiceBuilder;
 import Data.Services.MappingService;
 import Data.Strategies.ItemTypeStrategy;
 import Data.VeiwModels.BarrelViewModel;
@@ -13,9 +13,9 @@ public class BarrelsFromRandomGeneratorStrategy implements ItemTypeStrategy  {
     @Override
     public List<Item> getCollection(int collectionLength) {
         var mappingService = new MappingService();
-        long defaultSeed = 1234L;
-        var locale = "en";
-        var fakerService = new DataGenerationService(defaultSeed, locale);
+        var dataGenBuilder = new DataGenerationServiceBuilder();
+        dataGenBuilder.setSeedNumber();
+        var fakerService = dataGenBuilder.getService();
         List<BarrelViewModel> barrelViewModels = fakerService.getBarrelVModels(collectionLength);
 
         return barrelViewModels.stream()
