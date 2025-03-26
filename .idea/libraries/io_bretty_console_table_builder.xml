@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="io.bretty.console.table.builder" type="repository">
+    <properties maven-id="io.bretty:console-table-builder:1.2" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/io/bretty/console-table-builder/1.2/console-table-builder-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
