@@ -12,14 +12,16 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // fetching data  example
-        var collectionType = CollectionType.ANIMAL;
-        var dataSourceType = DataSourceType.RANDOM;
-        var arrayLength = 15;
-        var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
-        List<Item> items = dataProcessor.getItems();
-        TablePrinting.printTable(items);
+//        var collectionType = CollectionType.ANIMAL;
+//        var dataSourceType = DataSourceType.RANDOM;
+//        var arrayLength = 15;
+//        var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
+//        List<Item> items = dataProcessor.getItems();
+//        TablePrinting.printTable(items);
+//
+//        showDataFetchingAndSortingExample();
 
-        showDataFetchingAndSortingExample();
+        UserMenu.doSteps();
     }
 
     private static void showDataFetchingAndSortingExample() {

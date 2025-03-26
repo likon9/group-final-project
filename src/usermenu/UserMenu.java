@@ -3,12 +3,13 @@ package usermenu;
 import Data.DataProcessor;
 import UserInput.CollectionType;
 import UserInput.DataSourceType;
+import UserInput.TablePrinting;
 import customlist.CustomArrayList;
+import sorting.InsertionSort;
 
 import java.util.Scanner;
 
 public class UserMenu {
-    private static boolean isOk = true;
     private static CustomArrayList entityList;
     private static CollectionType entityType;
     private static DataSourceType dataSourceType;
@@ -17,19 +18,29 @@ public class UserMenu {
 
 
     public static void doSteps() {
-        isOk = chooseEntity();
-        if (!isOk)
-            return;
+        boolean isOk = chooseEntity();
+        if (!isOk) return;
 
         isOk = chooseLoader();
-        if (!isOk)
-            return;
+        if (!isOk) return;
 
         isOk = chooseCollectionLength();
-        if (!isOk)
-            return;
+        if (!isOk) return;
 
         loadCollection();
+
+        System.out.println(" ______________________________________________________________________");
+        System.out.println("| Коллекция до сортировки                                              |");
+        System.out.println(" ______________________________________________________________________");
+
+        TablePrinting.printTable(entityList);
+
+        System.out.println(" ______________________________________________________________________");
+        System.out.println("| Коллекция после сортировки                                           |");
+        System.out.println(" ______________________________________________________________________");
+
+        InsertionSort.insertionSort(entityList);
+        TablePrinting.printTable(entityList);
     }
 
     public static boolean chooseEntity() {
@@ -101,7 +112,6 @@ public class UserMenu {
             }
         }
     }
-
 
     public static void loadCollection() {
         DataProcessor dataProcessor = new DataProcessor(entityType, dataSourceType, collectionLength);
