@@ -7,6 +7,7 @@ import Data.Strategies.ForAnimal.*;
 import Data.Strategies.ForPerson.*;
 import Data.Strategies.ItemTypeStrategy;
 import Data.Strategies.ForPerson.PersonsFromFileStrategy;
+import Entity.Item;
 import UserInput.CollectionType;
 import UserInput.DataSourceType;
 
@@ -42,7 +43,7 @@ public class DataProcessor {
         }
     }
 
-    public List<Comparable<?>> getItems() {
+    public List<Item> getItems() {
         return itemTypeStrategy.getCollection(collecitonLenght);
     }
 }

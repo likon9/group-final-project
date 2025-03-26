@@ -1,16 +1,11 @@
 import Data.DataProcessor;
-import Entity.Animal;
-import Entity.AnimalEyeColor;
-import Entity.Item;
-import Sorting.QuickSort;
-import UserInput.CollectionType;
-import UserInput.DataSourceType;
+import Entity.*;
+import UserInput.*;
 import customlist.CustomArrayList;
 import usermenu.UserMenu;
+import sorting.InsertionSort;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -18,11 +13,62 @@ public class Main {
     public static void main(String[] args) {
         // fetching data  example
         var collectionType = CollectionType.ANIMAL;
-        var dataSourceType = DataSourceType.FILE;
+        var dataSourceType = DataSourceType.RANDOM;
+        var arrayLength = 15;
+        var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
+        List<Item> items = dataProcessor.getItems();
+        TablePrinting.printTable(items);
+
+        showDataFetchingAndSortingExample();
+    }
+
+    private static void showDataFetchingAndSortingExample() {
+        // data fetching and sorting examples
+        var collectionType = CollectionType.PERSON;
+        var dataSourceType = DataSourceType.RANDOM;
         var arrayLength = 12;
         var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
-        List<Comparable<?>> items = dataProcessor.getItems();
-        items.forEach(System.out::println);
+        List<Item> items = dataProcessor.getItems();
 
+        CustomArrayList<Animal> animals = null;
+        CustomArrayList<Barrel> barrels = null;
+        CustomArrayList<Person> persons = null;
+
+        switch (collectionType) {
+            case ANIMAL -> {
+                animals = new CustomArrayList<>();
+                animals.addAll(items.stream().map(x -> (Animal)x).toList());
+            }
+            case PERSON -> {
+                persons = new CustomArrayList<>();
+                persons.addAll(items.stream().map(x -> (Person)x).toList());
+            }
+            case BARREL -> {
+                barrels = new CustomArrayList<>();
+                barrels.addAll(items.stream().map(x -> (Barrel)x).toList());
+            }
+        }
+
+        System.out.println("\n///UNSORTED:///");
+        if (animals != null){
+            TablePrinting.printTable(animals);
+            InsertionSort.insertionSort(animals);
+            System.out.println("\n///SORTED:///");
+            TablePrinting.printTable(animals);
+        }
+
+        if (barrels != null){
+            TablePrinting.printTable(barrels);
+            InsertionSort.insertionSort(barrels);
+            System.out.println("\n///SORTED:///");
+            TablePrinting.printTable(barrels);
+        }
+
+        if (persons != null){
+            TablePrinting.printTable(persons);
+            InsertionSort.insertionSort(persons);
+            System.out.println("\n///SORTED:///");
+            TablePrinting.printTable(persons);
+        }
     }
 }

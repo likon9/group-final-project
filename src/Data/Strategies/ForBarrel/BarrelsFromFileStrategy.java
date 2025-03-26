@@ -1,36 +1,27 @@
 package Data.Strategies.ForBarrel;
 
 import Data.Services.JsonService;
+import Data.Services.MappingService;
 import Data.Strategies.ItemTypeStrategy;
 import Data.VeiwModels.BarrelViewModel;
 import Entity.Barrel;
-import Entity.BarrelMaterial;
+import Entity.Item;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BarrelsFromFileStrategy implements ItemTypeStrategy {
     @Override
-    public List<Comparable<?>> getCollection(int collectionLength) {
+    public List<Item> getCollection(int collectionLength) {
         var path = "CollectionFiles/barrels.json";
         var jsonService = new JsonService<BarrelViewModel>();
         List<BarrelViewModel> barrelViewModels = jsonService.readJson(path, BarrelViewModel.class);
-        List<Comparable<?>> barrels = new ArrayList<>();
-        for (var barrelViewModel : barrelViewModels) {
-            Barrel barrel = null;
-            try {
-                var barrelBuilder = new Entity.Barrel.BarrelBuilder(barrelViewModel.getVolume());
-                barrelBuilder.setStorageMaterial(barrelViewModel.getStoredContents());
-                barrelBuilder.setManufacturingMaterial(BarrelMaterial.values()[barrelViewModel.getBodyMaterialCode()]);
-                barrel = barrelBuilder.build();
-            } catch (ArrayIndexOutOfBoundsException e) {
-                continue;
-            }
+        var mappingService = new MappingService();
 
-            barrels.add(barrel);
-            if (barrels.size() == collectionLength) return barrels;
-        }
-
-        return barrels;
+        return barrelViewModels.stream()
+                .map(mappingService::BarrelViewModelToBarrel)
+                .filter(Barrel::isValid)
+                .limit(collectionLength)
+                .map(a -> (Item)a)
+                .toList();
     }
 }

@@ -16,7 +16,7 @@ public class UserMenu {
     private static Scanner scan = new Scanner(System.in);
 
 
-    public static void doSteps(String answ) {
+    public static void doSteps() {
         isOk = chooseEntity();
         if (!isOk)
             return;
