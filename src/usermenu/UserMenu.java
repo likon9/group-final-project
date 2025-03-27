@@ -1,16 +1,15 @@
 package usermenu;
 
-import Data.DataProcessor;
-import Entity.*;
-import UserInput.CollectionType;
-import UserInput.DataSourceType;
-import UserInput.TablePrinting;
+import data.DataProcessor;
+import entity.*;
+import userInput.CollectionType;
+import userInput.DataSourceType;
+import userInput.TablePrinting;
 import customlist.CustomArrayList;
 import filelogger.FileLogger;
 import search.CustomBinarySearch;
 import sorting.InsertionSort;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class UserMenu {

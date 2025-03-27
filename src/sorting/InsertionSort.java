@@ -1,6 +1,6 @@
 package sorting;
 
-import Entity.ComparableByIntField;
+import entity.ComparableByIntField;
 import customlist.CustomArrayList;
 
 import java.lang.reflect.Field;
