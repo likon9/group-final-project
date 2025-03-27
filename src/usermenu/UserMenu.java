@@ -153,6 +153,11 @@ public class UserMenu {
             try {
                 collectionLength = Integer.parseInt(answ);
 
+                if (collectionLength < 1) {
+                    System.out.println(" \"" + answ + "\" - недопустимое значение! Попробуйте еще раз.");
+                    continue;
+                }
+
                 if(dataSourceType==DataSourceType.FILE && collectionLength > 25) {
                     System.out.println("Длина коллекции из файла не должна превышать 25 элементов ! Попробуйте еще раз.");
                     continue;
