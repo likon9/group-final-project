@@ -37,4 +37,13 @@ public class BarrelViewModel {
     public void setBodyMaterialCode(int bodyMaterialCode) {
         this.bodyMaterialCode = bodyMaterialCode;
     }
+
+    @Override
+    public String toString() {
+        return "BarrelViewModel{" +
+                "volume=" + volume +
+                ", storedContents='" + storedContents + '\'' +
+                ", bodyMaterialCode=" + bodyMaterialCode +
+                '}';
+    }
 }
