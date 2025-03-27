@@ -2,6 +2,7 @@ import Data.DataProcessor;
 import Entity.*;
 import UserInput.*;
 import customlist.CustomArrayList;
+import usermenu.UserMenu;
 import sorting.InsertionSort;
 
 import java.util.List;
@@ -10,14 +11,18 @@ import java.util.List;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        var collectionType = CollectionType.ANIMAL;
-        var dataSourceType = DataSourceType.RANDOM;
-        var arrayLength = 15;
-        var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
-        List<Item> items = dataProcessor.getItems();
-        TablePrinting.printTable(items);
+        // fetching data  example
+//        var collectionType = CollectionType.ANIMAL;
+//        var dataSourceType = DataSourceType.RANDOM;
+//        var arrayLength = 15;
+//        var dataProcessor = new DataProcessor(collectionType, dataSourceType, arrayLength);
+//        List<Item> items = dataProcessor.getItems();
+//        TablePrinting.printTable(items);
+//
+//        showDataFetchingAndSortingExample();
 
-        showDataFetchingAndSortingExample();
+
+        UserMenu.doSteps();
     }
 
     private static void showDataFetchingAndSortingExample() {
