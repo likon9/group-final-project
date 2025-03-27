@@ -49,4 +49,14 @@ public class AnimalViewModel implements Serializable {
     public void setHasFur(boolean hasFur) {
         this.hasFur = hasFur;
     }
+
+    @Override
+    public String toString() {
+        return "AnimalViewModel{" +
+                "id=" + id +
+                ", species='" + species + '\'' +
+                ", eyesColorCode=" + eyesColorCode +
+                ", hasFur=" + hasFur +
+                '}';
+    }
 }
