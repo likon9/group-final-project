@@ -69,6 +69,10 @@ public class UserMenu {
                             isOk = searchItem();
                             escape = false;
                             break;
+                        case "3":
+                            wrongChoice = false;
+                            isOk = secondSorting();
+                            break;
                         case "exit":
                             wrongChoice = false;
                             escape = true;
@@ -256,6 +260,30 @@ public class UserMenu {
             System.out.println("Элемент не найден");
         else
             System.out.println(entityList.get(index) + " найден под индексом: " + index + 1);
+        return true;
+    }
+
+    public static boolean secondSorting() {
+        String sortingField = "";
+        switch (entityType) {
+            case ANIMAL:
+                sortingField = "id";
+                break;
+            case BARREL:
+                sortingField = "volume";
+                break;
+            case PERSON:
+                sortingField = "age";
+                break;
+        }
+        InsertionSort.sortByEvenIntField(entityList, sortingField);
+
+        System.out.println("┌——————————————————————————————————————————————————————————————————————┐");
+        System.out.println("| Коллекция после сортировки                                           |");
+        System.out.println("└——————————————————————————————————————————————————————————————————————┘");
+
+        TablePrinting.printTable(entityList);
+
         return true;
     }
 }
