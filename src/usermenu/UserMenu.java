@@ -162,6 +162,8 @@ public class UserMenu {
 
     public static boolean searchItem() {
 
+        InsertionSort.insertionSort(entityList);
+
         boolean isOk = switch (entityType) {
             case ANIMAL -> animalSearch();
             case BARREL -> barrelSearch();
@@ -175,25 +177,34 @@ public class UserMenu {
         Animal[] animalArray = new Animal[entityList.size()];
         animalArray = (Animal[]) entityList.toArray(animalArray);
         Animal.AnimalBuilder builder;
-        System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
-        System.out.println("| Через пробел вводите:                                                         |");
-        System.out.println("|   -Id                                                                         |");
-        System.out.println("|   -Вид животного                                                              |");
-        System.out.println("|   -Цвет глаз: RED, BLUE, GREEN, YELLOW, BLACK, WHITE                          |");
-        System.out.println("|   -Есть ли шерсть? 1: да; 2: нет                                              |");
-        System.out.println("| exit: для выхода из поиска                                                    |");
-        System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
-        String[] answ = scan.nextLine().split(" ");
-        if (answ[0].equalsIgnoreCase("exit")) {
-            return false;
-        } else {
-            builder = new Animal.AnimalBuilder(answ[1]);
-            builder.setId(Integer.parseInt(answ[0]));
-            builder.setEyeColor(AnimalEyeColor.valueOf(answ[2]));
-            if (answ[3].equals("1"))
-                builder.setHasFur(true);
-            else
-                builder.setHasFur(false);
+
+        while (true) {
+            System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
+            System.out.println("| Через пробел вводите:                                                         |");
+            System.out.println("|   -Id                                                                         |");
+            System.out.println("|   -Вид животного                                                              |");
+            System.out.println("|   -Цвет глаз: RED, BLUE, GREEN, YELLOW, BLACK, WHITE                          |");
+            System.out.println("|   -Есть ли шерсть? 1: да; 2: нет                                              |");
+            System.out.println("| exit: для выхода из поиска                                                    |");
+            System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
+
+            try {
+                String[] answ = scan.nextLine().split(" ");
+                if (answ[0].equalsIgnoreCase("exit")) {
+                    return false;
+                } else {
+                    builder = new Animal.AnimalBuilder(answ[1]);
+                    builder.setId(Integer.parseInt(answ[0]));
+                    builder.setEyeColor(AnimalEyeColor.valueOf(answ[2]));
+                    if (answ[3].equals("1"))
+                        builder.setHasFur(true);
+                    else
+                        builder.setHasFur(false);
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println("Что-то пошло не так....");
+            }
         }
 
         Animal item = builder.build();
@@ -209,20 +220,29 @@ public class UserMenu {
         Barrel[] barrelArray = new Barrel[entityList.size()];
         barrelArray = (Barrel[]) entityList.toArray(barrelArray);
         Barrel.BarrelBuilder builder;
-        System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
-        System.out.println("| Через пробел вводите:                                                         |");
-        System.out.println("|   -Объем бочки                                                                |");
-        System.out.println("|   -Хранимый материал                                                          |");
-        System.out.println("|   -Материал из которого изготовлена: WOOD, IRON, ALUMINIUM, STEEL, PLASTIC    |");
-        System.out.println("| exit: для выхода из поиска                                                    |");
-        System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
-        String[] answ = scan.nextLine().split(" ");
-        if (answ[0].equalsIgnoreCase("exit")) {
-            return false;
-        } else {
-            builder = new Barrel.BarrelBuilder(Double.parseDouble(answ[0]));
-            builder.setStorageMaterial(answ[1]);
-            builder.setManufacturingMaterial(BarrelMaterial.valueOf(answ[2]));
+
+        while (true) {
+            System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
+            System.out.println("| Через пробел вводите:                                                         |");
+            System.out.println("|   -Объем бочки                                                                |");
+            System.out.println("|   -Хранимый материал                                                          |");
+            System.out.println("|   -Материал из которого изготовлена: WOOD, IRON, ALUMINIUM, STEEL, PLASTIC    |");
+            System.out.println("| exit: для выхода из поиска                                                    |");
+            System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
+
+            try {
+                String[] answ = scan.nextLine().split(" ");
+                if (answ[0].equalsIgnoreCase("exit")) {
+                    return false;
+                } else {
+                    builder = new Barrel.BarrelBuilder(Double.parseDouble(answ[0]));
+                    builder.setStorageMaterial(answ[1]);
+                    builder.setManufacturingMaterial(BarrelMaterial.valueOf(answ[2]));
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println("Что-то пошло не так....");
+            }
         }
 
         Barrel item = builder.build();
@@ -238,20 +258,28 @@ public class UserMenu {
         Person[] personArray = new Person[entityList.size()];
         personArray = (Person[]) entityList.toArray(personArray);
         Person.PersonBuilder builder;
-        System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
-        System.out.println("| Через пробел вводите:                                                         |");
-        System.out.println("|   -Пол: MALE, FEMALE                                                          |");
-        System.out.println("|   -Возраст                                                                    |");
-        System.out.println("|   -Фамилия                                                                    |");
-        System.out.println("| exit: для выхода из поиска                                                    |");
-        System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
-        String[] answ = scan.nextLine().split(" ");
-        if (answ[0].equalsIgnoreCase("exit")) {
-            return false;
-        } else {
-            builder = new Person.PersonBuilder(Gender.valueOf(answ[0]));
-            builder.setAge(Integer.parseInt(answ[1]));
-            builder.setLastName(answ[2]);
+
+        while (true) {
+            System.out.println("┌———————————————————————————————————————————————————————————————————————————————┐");
+            System.out.println("| Через пробел вводите:                                                         |");
+            System.out.println("|   -Пол: MALE, FEMALE                                                          |");
+            System.out.println("|   -Возраст                                                                    |");
+            System.out.println("|   -Фамилия                                                                    |");
+            System.out.println("| exit: для выхода из поиска                                                    |");
+            System.out.println("└———————————————————————————————————————————————————————————————————————————————┘");
+            try {
+                String[] answ = scan.nextLine().split(" ");
+                if (answ[0].equalsIgnoreCase("exit")) {
+                    return false;
+                } else {
+                    builder = new Person.PersonBuilder(Gender.valueOf(answ[0]));
+                    builder.setAge(Integer.parseInt(answ[1]));
+                    builder.setLastName(answ[2]);
+                }
+                break;
+            } catch (Exception e) {
+                System.out.println("Что-то пошло не так....");
+            }
         }
 
         Person item = builder.build();
