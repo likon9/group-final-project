@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Person implements Item, Serializable, Comparable<Person> {
+public class Person implements Item, Serializable, Comparable<Person>, ComparableByIntField {
 
     private Gender gender ;
     private int age;
@@ -78,6 +78,11 @@ public class Person implements Item, Serializable, Comparable<Person> {
         if (gender == null) return false;
         if (lastName == null || lastName.isBlank()) return false;
         return true;
+    }
+
+    @Override
+    public int getIntFieldValue() {
+        return age;
     }
 
     public static class PersonBuilder {
