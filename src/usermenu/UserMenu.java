@@ -6,6 +6,7 @@ import UserInput.CollectionType;
 import UserInput.DataSourceType;
 import UserInput.TablePrinting;
 import customlist.CustomArrayList;
+import filelogger.FileLogger;
 import search.CustomBinarySearch;
 import sorting.InsertionSort;
 
@@ -53,7 +54,8 @@ public class UserMenu {
                 System.out.println("| Выберите дальнейшее действие                                         |");
                 System.out.println("|——————————————————————————————————————————————————————————————————————|");
                 System.out.println("| 1: Вернуться к выбору типа данных; 2: Поиск элемента;                |");
-                System.out.println("| 3: Сортировка коллекции по числовому полю; exit: выход из программы  |");
+                System.out.println("| 3: Сортировка коллекции по числовому полю;                           |");
+                System.out.println("| 4: Сохранить коллекцию в файл; exit: выход из программы              |");
                 System.out.println("└——————————————————————————————————————————————————————————————————————┘");
 
                 boolean wrongChoice = true;
@@ -72,6 +74,10 @@ public class UserMenu {
                         case "3":
                             wrongChoice = false;
                             isOk = secondSorting();
+                            break;
+                        case "4":
+                            wrongChoice = false;
+                            isOk = saveToFile();
                             break;
                         case "exit":
                             wrongChoice = false;
@@ -301,8 +307,8 @@ public class UserMenu {
                 sortingField = "id";
                 break;
             case BARREL:
-                sortingField = "volume";
-                break;
+                System.out.println("Эта операция недоступна для Barrel");
+                return true;
             case PERSON:
                 sortingField = "age";
                 break;
@@ -315,6 +321,16 @@ public class UserMenu {
 
         TablePrinting.printTable(entityList);
 
+        return true;
+    }
+
+    public static boolean saveToFile() {
+        try {
+            FileLogger.logFromExternal(entityList, entityType.toString());
+            System.out.println("Данные успешно записаны в файл!");
+        } catch (Exception e) {
+            System.out.println("Что-то пошло не так....");
+        }
         return true;
     }
 }
