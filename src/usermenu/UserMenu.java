@@ -152,6 +152,12 @@ public class UserMenu {
             String answ = scan.nextLine();
             try {
                 collectionLength = Integer.parseInt(answ);
+
+                if(dataSourceType==DataSourceType.FILE && collectionLength > 25) {
+                    System.out.println("Длина коллекции из файла не должна превышать 25 элементов ! Попробуйте еще раз.");
+                    continue;
+                }
+
                 return true;
             } catch (NumberFormatException e) {
                 if (answ.equalsIgnoreCase("exit")){
