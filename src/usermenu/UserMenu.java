@@ -78,6 +78,8 @@ public class UserMenu {
                             escape = true;
                             isOk = false;
                             break;
+                        default:
+                            System.out.println("Варианта \"" + answ + "\" нет. Попробуйте еще раз.");
                     }
                 }
             }
@@ -105,7 +107,8 @@ public class UserMenu {
                     entityType = CollectionType.PERSON;
                     return true;
                 case "exit": return false;
-                default: System.out.println("Варианта \"" + answ + "\" нет. Попробуйте еще раз.");
+                default:
+                    System.out.println("Варианта \"" + answ + "\" нет. Попробуйте еще раз.");
             }
         }
     }
