@@ -46,7 +46,7 @@ public class UserMenu {
 
             InsertionSort.insertionSort(entityList);
             TablePrinting.printTable(entityList);
-
+            TableFileLogger.logTableToFile(entityList);
             boolean escape = false;
             while (!escape) {
                 System.out.println("┌——————————————————————————————————————————————————————————————————————┐");
@@ -54,7 +54,7 @@ public class UserMenu {
                 System.out.println("|——————————————————————————————————————————————————————————————————————|");
                 System.out.println("| 1: Вернуться к выбору типа данных; 2: Поиск элемента;                |");
                 System.out.println("| 3: Сортировка коллекции по числовому полю;                           |");
-                System.out.println("| 4: Сохранить коллекцию в файл; exit: выход из программы              |");
+                System.out.println("| 4: Сохранить в файл; exit: выход из программы              |");
                 System.out.println("└——————————————————————————————————————————————————————————————————————┘");
 
                 boolean wrongChoice = true;
@@ -217,7 +217,11 @@ public class UserMenu {
                     builder.setEyeColor(AnimalEyeColor.valueOf(answ[2]));
                     if (answ[3].equals("1"))
                         builder.setHasFur(true);
-                    else
+                    else if (answ[3].equals("true"))
+                        builder.setHasFur(true);
+                    else if (answ[3].equals("2"))
+                        builder.setHasFur(false);
+                    else if (answ[3].equals("false"))
                         builder.setHasFur(false);
                 }
                 break;
@@ -232,6 +236,7 @@ public class UserMenu {
             System.out.println("Элемент не найден");
         else
             System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
+        TableFileLogger.logSearchResult(entityList.get(index), index);
         return true;
     }
 
@@ -270,6 +275,7 @@ public class UserMenu {
             System.out.println("Элемент не найден");
         else
             System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
+            TableFileLogger.logSearchResult(entityList.get(index), index);
         return true;
     }
 
@@ -307,6 +313,7 @@ public class UserMenu {
             System.out.println("Элемент не найден");
         else
             System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
+            TableFileLogger.logSearchResult(entityList.get(index), index); TableFileLogger.logTableToFile(entityList);
         return true;
     }
 

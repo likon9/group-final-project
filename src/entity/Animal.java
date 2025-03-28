@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Animal implements Item, Serializable, Comparable<Animal> {
+public class Animal implements Item, Comparable<Animal> {
 
     private int id;
     private String animalSpecies;

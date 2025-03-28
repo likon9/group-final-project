@@ -1,10 +1,9 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Barrel implements Item, Serializable, Comparable<Barrel> {
+public class Barrel implements Item, Comparable<Barrel> {
 
     private double volume;
     private String storedContents ;

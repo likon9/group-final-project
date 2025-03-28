@@ -1,10 +1,9 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class Person implements Item, Serializable, Comparable<Person>, ComparableByIntField {
+public class Person implements Item, Comparable<Person>, ComparableByIntField {
 
     private Gender gender ;
     private int age;
