@@ -7,6 +7,7 @@ import data.veiwmodels.PersonViewModel;
 import entity.Item;
 import entity.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonsFromRandomGeneratorStrategy implements ItemTypeStrategy {
@@ -18,12 +19,18 @@ public class PersonsFromRandomGeneratorStrategy implements ItemTypeStrategy {
         dataGenBuilder.setLocale();
         var fakerService = dataGenBuilder.getService();
 
-        List<PersonViewModel> personViewModels = fakerService.getPersonVModels(collectionLength);
+        var requiredElementsNumber = collectionLength;
+        List<Item> items = new ArrayList<>();
+        do {
+            List<PersonViewModel> personViewModels = fakerService.getPersonVModels(requiredElementsNumber);
+            items.addAll(personViewModels.stream()
+                    .map(mappingService::PersonViewModelToPerson)
+                    .filter(Person::isValid)
+                    .map(a -> (Item) a)
+                    .toList());
+            requiredElementsNumber = collectionLength - items.size();
+        } while (requiredElementsNumber > 0);
 
-        return personViewModels.stream()
-                .map(mappingService::PersonViewModelToPerson)
-                .filter(Person::isValid)
-                .map(a -> (Item)a)
-                .toList();
+        return items;
     }
 }

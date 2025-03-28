@@ -41,9 +41,9 @@ public class DataGenerationService {
         var animals = new ArrayList<AnimalViewModel>();
         for (int i = 0; i < listLength; i++) {
             var animalProvider = faker.animal();
-            int id = faker.number().numberBetween(-10, Integer.MAX_VALUE - 1);
+            int id = faker.number().numberBetween(0, Integer.MAX_VALUE - 1);
             int maxEyeColorCodeValue = BarrelMaterial.values().length;
-            int errorCodes = 1;
+            int errorCodes = 2;
             int eyeColorCodeValue = faker.number().numberBetween(0, maxEyeColorCodeValue + errorCodes);
             boolean hasFur = faker.bool().bool();
             var animalVM = new AnimalViewModel(id, animalProvider.name(), eyeColorCodeValue, hasFur);
@@ -57,7 +57,7 @@ public class DataGenerationService {
         var persons = new ArrayList<PersonViewModel>();
         for (int i = 0; i < listLength; i++) {
             var lastName = faker.name().lastName();
-            var age = faker.number().numberBetween(-10, 110);
+            var age = faker.number().numberBetween(-10, 90);
             var genderCode = faker.number().numberBetween(0, 2);
             var personVM = new PersonViewModel(genderCode, age, lastName);
             persons.add(personVM);

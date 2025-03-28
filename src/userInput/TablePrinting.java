@@ -6,20 +6,49 @@ import io.bretty.console.table.*;
 import java.util.List;
 
 public class TablePrinting {
+    static final int minTableWidth = 70;
+
+    static public void printMessages(List<String> messages) {
+        if(messages == null || messages.isEmpty()) return;
+        messages = messages.stream().map(x -> " " + x + " ").toList();
+        var longestMessageLength = messages.stream().mapToInt(String::length).max().orElse(0);
+        var lineLength = Math.max(longestMessageLength, minTableWidth);
+        var tableHeader = "┌" + ("—".repeat(lineLength)) + "┐";
+        var tableBottom = "└" + "—".repeat(lineLength) + "┘";
+        var tableHeaderBottom = "|" + "—".repeat(lineLength) + "|";
+
+        System.out.println(tableHeader);
+        printLine(messages.get(0), lineLength);
+        if (messages.size() > 1) {
+            System.out.println(tableHeaderBottom);
+            for (int i = 1; i < messages.size(); i++) {
+                printLine(messages.get(i), lineLength);
+            }
+        }
+
+        System.out.println(tableBottom);
+    }
+
+    private static void printLine(String message, int longestMessageLength) {
+        var spaces = " ".repeat(longestMessageLength - message.length());
+        System.out.println("|" + message + spaces + "|");
+    }
+
     static public void printTable(List<? extends Item> collection) {
         if (collection != null && !collection.isEmpty()) {
-            var itemClass = collection.get(0).getClass();
-            var itemClassName = itemClass.getName();
+            Item firstItem = collection.get(0);
+
             Table table = null;
-            if (itemClassName.contains("Barrel")) {
+            if (firstItem instanceof Barrel){
                 table = getBarrelsTable(collection);
             }
-            if (itemClassName.contains("Person")) {
+            if (firstItem instanceof Animal){
+                table = getAnimalsTable(collection);
+            }
+            if (firstItem instanceof Person){
                 table = getPersonsTable(collection);
             }
-            if (itemClassName.contains("Animal")) {
-               table = getAnimalsTable(collection);
-            }
+
             if (table != null){
                 var lineLength = table.toString().length() / (collection.size() + 1);
                 var tableHeader = "┌" + ("—".repeat(lineLength - 2)) + "┐";
