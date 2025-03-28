@@ -7,6 +7,7 @@ import data.veiwmodels.BarrelViewModel;
 import entity.Barrel;
 import entity.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BarrelsFromRandomGeneratorStrategy implements ItemTypeStrategy  {
@@ -16,12 +17,19 @@ public class BarrelsFromRandomGeneratorStrategy implements ItemTypeStrategy  {
         var dataGenBuilder = new DataGenerationServiceBuilder();
         dataGenBuilder.setSeedNumber();
         var fakerService = dataGenBuilder.getService();
-        List<BarrelViewModel> barrelViewModels = fakerService.getBarrelVModels(collectionLength);
 
-        return barrelViewModels.stream()
-                .map(mappingService::BarrelViewModelToBarrel)
-                .filter(Barrel::isValid)
-                .map(a -> (Item)a)
-                .toList();
+        var requiredElementsNumber = collectionLength;
+        List<Item> items = new ArrayList<>();
+        do {
+            List<BarrelViewModel> barrelViewModels = fakerService.getBarrelVModels(requiredElementsNumber);
+            items.addAll(barrelViewModels.stream()
+                    .map(mappingService::BarrelViewModelToBarrel)
+                    .filter(Barrel::isValid)
+                    .map(a -> (Item) a)
+                    .toList());
+            requiredElementsNumber = collectionLength - items.size();
+        } while (requiredElementsNumber > 0);
+
+        return items;
     }
 }
