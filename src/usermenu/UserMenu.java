@@ -231,7 +231,7 @@ public class UserMenu {
         if (index == -1)
             System.out.println("Элемент не найден");
         else
-            System.out.println(entityList.get(index) + " найден под индексом: " + index + 1);
+            System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
         return true;
     }
 
@@ -269,7 +269,7 @@ public class UserMenu {
         if (index == -1)
             System.out.println("Элемент не найден");
         else
-            System.out.println(entityList.get(index) + " найден под индексом: " + index + 1);
+            System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
         return true;
     }
 
@@ -306,7 +306,7 @@ public class UserMenu {
         if (index == -1)
             System.out.println("Элемент не найден");
         else
-            System.out.println(entityList.get(index) + " найден под индексом: " + index + 1);
+            System.out.println(entityList.get(index) + " найден под индексом: " + (index + 1));
         return true;
     }
 
