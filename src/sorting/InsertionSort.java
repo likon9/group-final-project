@@ -1,5 +1,6 @@
 package sorting;
 
+import entity.ComparableByIntField;
 import customlist.CustomArrayList;
 
 import java.lang.reflect.Field;
@@ -19,6 +20,37 @@ public class InsertionSort<T extends Comparable<T>> {
 
             list.set(j + 1, key);
         }
+    }
+
+    /**
+     * Sorts list of elements by corresponding integer field value.
+     *
+     * @param list         list to sort
+     * @param <T>          class of list elements
+     */
+    public static <T extends ComparableByIntField> void sortByEvenIntField(List<T> list) {
+
+        for (int i = 1; i < list.size(); i++) {
+            T objToInsert = list.get(i);
+            int fieldValueToInsert = objToInsert.getIntFieldValue();
+            if (fieldValueToInsert % 2 != 0) {
+                continue;
+            }
+            int indexToInsert = i;
+            int indexOfElementToCompare = i - 1;
+
+            while (indexOfElementToCompare >= 0) {
+                T objToCompare = list.get(indexOfElementToCompare);
+                int intFieldOfValueToCompareValue = objToCompare.getIntFieldValue();
+                if (intFieldOfValueToCompareValue % 2 == 0 && intFieldOfValueToCompareValue > fieldValueToInsert) {
+                    list.set(indexToInsert, list.get(indexOfElementToCompare));
+                    indexToInsert = indexOfElementToCompare;
+                }
+                indexOfElementToCompare--;
+            }
+            list.set(indexToInsert, objToInsert);
+        }
+
     }
 
     /**

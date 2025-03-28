@@ -1,0 +1,27 @@
+package data.strategies.ForBarrel;
+
+import data.services.DataGenerationServiceBuilder;
+import data.services.MappingService;
+import data.strategies.ItemTypeStrategy;
+import data.veiwmodels.BarrelViewModel;
+import entity.Barrel;
+import entity.Item;
+
+import java.util.List;
+
+public class BarrelsFromRandomGeneratorStrategy implements ItemTypeStrategy  {
+    @Override
+    public List<Item> getCollection(int collectionLength) {
+        var mappingService = new MappingService();
+        var dataGenBuilder = new DataGenerationServiceBuilder();
+        dataGenBuilder.setSeedNumber();
+        var fakerService = dataGenBuilder.getService();
+        List<BarrelViewModel> barrelViewModels = fakerService.getBarrelVModels(collectionLength);
+
+        return barrelViewModels.stream()
+                .map(mappingService::BarrelViewModelToBarrel)
+                .filter(Barrel::isValid)
+                .map(a -> (Item)a)
+                .toList();
+    }
+}
